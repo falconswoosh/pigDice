@@ -10,50 +10,27 @@ function Game (playerID) {
   this.playerID = playerID;
   this.currentRoll = 0;
   this.round = 0;
-  this.hold = $("#hold").click(function(){
-        var id = $(this).attr("id");
-        alert("You clickd the " + id + " button...");
-      });
 }
 
 // var diceValue = dice();
 // var playerOne =  new Player.this.playerID("1");
 // var playerTwo = new Player.this.playerID("2");
+var buttonHold = $("button#hold").val()
 //
 Player.prototype.roll = function () {
   // console.log("roll method");
   this.currentRoll = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-  this.roundScore=this.roundScore++;
+  this.roundScore=this.roundScore++
   if (this.currentRoll === 1) {
-    this.roundScore = 0;
+    this.roundScore = 0
     console.log("Your turn is done!");
-    $(".row").show();
-    $(".outputOne").append("<li>"+"You rolled a "+playerOne.currentRoll+"</li>");
-  } else {
-    $("#hold").click(function() {
-      var id = $(this).attr("id");
-      alert("Your clicked the " + id + " button");
-      return;
-});
-}
-}
-// Game.protype.hold = function() {
-//     $("#hold").click(function() {
-//       var id = $(this).attr("id");
-//       alert("You clickd the " + id + " button...");
-//     });
-// };
-    //--------- Beginning of Hold test --------------------------------------
-    // Below works; yet value is zero even before the hold button is clicked.
-    // var buttonHold = $("button#hold").val()
-    // if (buttonHold == "0") {
-    //   alert("HOld!");
-    // }
-    //------- End of Hold test ----------------------------------------------
 
         // this.roundScore = 0
         // this.round=this.round++
         // alert("hi");
+
+  }
+};
 
 // Game.prototype.hold = function () {
 //     if ($("#hold").click(function() === true) {
@@ -70,20 +47,24 @@ Player.prototype.roll = function () {
 //   console.log("You are on hold");
 // })
 
-// function myfunction() {
-//   if (document.getElementById("hold").val() === true) {
-//     alert("You got it!");
-// }
-// }
+function myfunction() {
+  if (document.getElementById("hold").val() === true) {
+    alert("You got it!");
+}
+}
 //User Interface
 $(document).ready(function() {
   $("#roll").click(function(event) {
     event.preventDefault();
+
+
+  // var diceRoll = parseInt($("button#roll").val());
+
   var playerOne =  new Player("1");
   playerOne.roll();
-  // console.log(playerOne.currentRoll)
-  // var playerTwo = new Player("2");
-  // playerTwo.roll();
+  console.log(playerOne.currentRoll)
+  var playerTwo = new Player("2");
+  playerTwo.roll();
   // if (currentPlayer === "One") {
   //   $(".outputOne").prepend("<li>"+diceValue+"</li>")
   // } else {
@@ -92,28 +73,20 @@ $(document).ready(function() {
     // $(".outputOne").prepend("<li>"+diceRoll+"</li>");
     $(".row").show();
     $(".outputOne").append("<li>"+playerOne.currentRoll+"</li>");
+
+    });
   });
-
-
     $("#hold").click(function(event) {
       event.preventDefault();
-      // var buttonHold = $("button#hold").val()
-      // if (buttonHold == "0") {
-      //   alert("HOld!");
-      // }
 
-//------ This works if placed under Player.prototype.roll
-      $("#hold").click(function() {
-        var id = $(this).attr("id");
-        alert("Your clicked the " + id + " button");
-    });
 
-    // var diceRoll = parseInt($("button#roll").val());
+    var diceRoll = parseInt($("button#roll").val());
+
     var playerOne =  new Player("1");
-    // playerOne.hold();
+    playerOne.hold();
     console.log(playerOne.currentRoll)
     var playerTwo = new Player("2");
-    // playerTwo.hold();
+    playerTwo.hold();
     // if (currentPlayer === "One") {
     //   $(".outputOne").prepend("<li>"+diceValue+"</li>")
     // } else {
@@ -123,4 +96,3 @@ $(document).ready(function() {
       $(".row").show();
       $(".outputOne").prepend("<li>"+playerOne.currentRoll+"</li>");
   });
-});
